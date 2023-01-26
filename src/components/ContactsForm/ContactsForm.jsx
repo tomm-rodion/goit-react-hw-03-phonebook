@@ -1,8 +1,14 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import * as yup from 'yup';
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
+import {
+  FormAddContact,
+  InputField,
+  Label,
+  ButtonAddContact,
+} from './ContactsForm.styled';
 
 export class ContactsForm extends Component {
   handleSubmit = ({ name, number }, { resetForm }) => {
@@ -33,17 +39,17 @@ export class ContactsForm extends Component {
         onSubmit={this.handleSubmit}
         validationSchema={this.schema}
       >
-        <Form>
-          <label htmlFor="name">
+        <FormAddContact>
+          <Label htmlFor="name">
             Name
-            <Field type="text" name="name" placeholder="First Name" />
-          </label>
-          <label htmlFor="number">
+            <InputField type="text" name="name" placeholder="First Name" />
+          </Label>
+          <Label htmlFor="number">
             Number
-            <Field type="text" name="number" placeholder="Number tel:" />
-          </label>
-          <button type="submit">Add contact</button>
-        </Form>
+            <InputField type="text" name="number" placeholder="Number tel:" />
+          </Label>
+          <ButtonAddContact type="submit">Add contact</ButtonAddContact>
+        </FormAddContact>
       </Formik>
     );
   }
