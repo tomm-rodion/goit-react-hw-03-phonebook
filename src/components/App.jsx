@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { ContactList } from './ContactList/ContactList';
 import { ContactsFilter } from './ContactsFilter/CotactsFilter';
 import { ContactsForm } from './ContactsForm/ContactsForm';
-import { Wrapper, TitlePhoneBook, TitleContacts } from './App.styled';
+import {
+  Wrapper,
+  Container,
+  TitlePhoneBook,
+  TitleContacts,
+} from './App.styled';
 
 export class App extends Component {
   state = {
@@ -56,16 +61,20 @@ export class App extends Component {
 
     return (
       <Wrapper>
-        <TitlePhoneBook>Phonebook</TitlePhoneBook>
-        <ContactsForm onSubmit={this.onformSubmit} contacts={contacts} />
-        <TitleContacts>Contacts</TitleContacts>
-        <ContactsFilter onFilter={this.onFilter} filter={filter} />
-        <ContactList
-          contacts={contacts}
-          filter={filter}
-          onDelete={this.onDelete}
-          filterContacts={this.onFilterContacts}
-        />
+        <Container>
+          <TitlePhoneBook>Phonebook</TitlePhoneBook>
+          <ContactsForm onSubmit={this.onformSubmit} contacts={contacts} />
+        </Container>
+        <Container>
+          <TitleContacts>Contacts</TitleContacts>
+          <ContactsFilter onFilter={this.onFilter} filter={filter} />
+          <ContactList
+            contacts={contacts}
+            filter={filter}
+            onDelete={this.onDelete}
+            filterContacts={this.onFilterContacts}
+          />
+        </Container>
       </Wrapper>
     );
   }

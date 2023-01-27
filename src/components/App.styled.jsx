@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { font, titleColor } from './Style/mixins';
 
 export const Wrapper = styled.div`
   padding: 25px;
@@ -8,30 +9,29 @@ export const Wrapper = styled.div`
   background-color: #d9dbe1;
 `;
 
+export const Container = styled.div`
+  width: auto;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  &:first-of-type {
+    margin-bottom: 15px;
+  }
+`;
+
 export const TitlePhoneBook = styled.h1`
   text-align: center;
   margin: 0;
-  font-size: 60px;
-  font-weight: 700;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: conic-gradient(
-    #553c9a 30%,
-    #ee4b2b 40%,
-    #ee4b2b 70%,
-    #00c2cb 80%,
-    #553c9a
-  );
+  ${font({ fs: 60, fw: 700 })}
+  ${titleColor()};
   margin-bottom: 20px;
 `;
 
 export const TitleContacts = styled.h2`
   text-align: center;
   margin: 20px auto;
-  font-size: 30px;
-  font-weight: 600;
-  line-height: 30px;
+  ${font({ fs: 30, fw: 600, lh: 30 })}
+  ${titleColor()};
   margin-bottom: 20px;
-  color: #313131;
 `;
