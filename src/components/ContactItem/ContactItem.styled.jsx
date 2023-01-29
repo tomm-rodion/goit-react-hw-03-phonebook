@@ -10,6 +10,6 @@ export const ItemContact = styled.li`
 export const ButtonDeleteContact = styled.button`
   ${font({ fs: 14, fw: 400, lh: 18 })};
   ${btn};
-  padding: 5px 10px;
+  padding: 5px 15px;
   margin: 10px 0px;
 `;
