@@ -2,9 +2,11 @@ import styled from '@emotion/styled';
 import { font } from 'components/Style/mixins';
 
 export const LabelSearchContact = styled.label`
+  display: block;
   color: #f51616;
   ${font};
   margin-right: 5px;
+  margin-bottom: 10px;
 `;
 
 export const FilterInput = styled.input`

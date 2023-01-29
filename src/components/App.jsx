@@ -55,6 +55,19 @@ export class App extends Component {
     }
     return filterContact;
   };
+  componentDidMount = () => {
+    const sevedContacts = localStorage.getItem('contacts');
+    if (sevedContacts !== null) {
+      const parsContacts = JSON.parse(sevedContacts);
+      this.setState({ contacts: parsContacts });
+    }
+  };
+
+  componentDidUpdate = (_, prevState) => {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  };
 
   render() {
     const { contacts, filter } = this.state;
