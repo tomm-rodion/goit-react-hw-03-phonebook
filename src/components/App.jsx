@@ -9,6 +9,8 @@ import {
   TitleContacts,
 } from './App.styled';
 
+const localStorageKey = 'contacts';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -18,6 +20,23 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
+  };
+
+  componentDidMount = () => {
+    const savedContacts = localStorage.getItem(localStorageKey);
+    if (savedContacts !== null) {
+      const parsContacts = JSON.parse(savedContacts);
+      this.setState({ contacts: parsContacts });
+    }
+  };
+
+  componentDidUpdate = (_, prevState) => {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(this.state.contacts)
+      );
+    }
   };
 
   onformSubmit = ({ id, name, number }) => {
@@ -34,11 +53,11 @@ export class App extends Component {
   };
 
   onDelete = id => {
-    const resultSortedContacts = this.state.contacts.filter(
-      contact => contact.id !== id
-    );
     this.setState(prevState => {
-      return { ...prevState, contacts: [...resultSortedContacts] };
+      const resultSortedContacts = prevState.contacts.filter(
+        contact => contact.id !== id
+      );
+      return { contacts: [...resultSortedContacts] };
     });
   };
 
@@ -54,19 +73,6 @@ export class App extends Component {
       return this.state.contacts;
     }
     return filterContact;
-  };
-  componentDidMount = () => {
-    const sevedContacts = localStorage.getItem('contacts');
-    if (sevedContacts !== null) {
-      const parsContacts = JSON.parse(sevedContacts);
-      this.setState({ contacts: parsContacts });
-    }
-  };
-
-  componentDidUpdate = (_, prevState) => {
-    if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
   };
 
   render() {
