@@ -27,8 +27,8 @@ export class ContactsForm extends Component {
   };
 
   schema = yup.object().shape({
-    name: yup.string().required(),
-    number: yup.number().positive().required(),
+    name: yup.string().min(2).max(12).required(),
+    number: yup.string().min(2).max(12).required(),
   });
 
   render() {
